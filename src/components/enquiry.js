@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import "./style.css";
 
-const getLocalData = () =>{
+const getLocalData = () => {
     const lists = localStorage.getItem("storage");
 
-    if(lists){
+    if (lists) {
         return JSON.parse(lists);
     } else {
         return [];
@@ -18,17 +18,17 @@ const Enquiry = () => {
     const [items, setItems] = useState(getLocalData());
     const [iseditItems, setIsEditItem] = useState("");
     const [toggleButton, setToggleButton] = useState(false);
+
+
     // add the items
-
-
     const onSubmits = (event) => {
         if ((!name) || (!email) || (!age)) {
             alert("Please fill the data")
-        } else if((name && email && age) && (toggleButton)){
+        } else if ((name && email && age) && (toggleButton)) {
             setItems(
                 items.map((val) => {
-                    if(val.id === iseditItems){
-                        return {...val, "name": name, "email": email, "age": age};
+                    if (val.id === iseditItems) {
+                        return { ...val, "name": name, "email": email, "age": age };
                     }
                     return val;
                 })
@@ -39,9 +39,9 @@ const Enquiry = () => {
             setIsEditItem(null);
             setToggleButton(false);
 
-        } 
+        }
         else {
-            setItems([...items, { "id": Math.random().toString().slice(2,11), "name": name, "email": email, "age": age }])
+            setItems([...items, { "id": Math.random().toString().slice(2, 11), "name": name, "email": email, "age": age }])
         }
         setName("");
         setEmail("");
@@ -49,13 +49,11 @@ const Enquiry = () => {
 
     }
 
+    //to store data on local storage and make it permanent
     useEffect(() => {
         localStorage.setItem("storage", JSON.stringify(items))
     }, [items])
 
-    // const onDefault = (event) => {
-    //     event.preventDefault();
-    // }
 
     const inputEventName = (event) => {
         console.log(event.target.value);
@@ -88,20 +86,13 @@ const Enquiry = () => {
 
     // delete Item in card
     const deleteItem = (index) => {
-        const updatedItem = items.filter((val) =>{
+        const updatedItem = items.filter((val) => {
             return val.id !== index;
         });
         setItems(updatedItem);
     }
-    // const addItem = () => {
-    //     if ((!name) || (!email) || (!age)) {
-    //         alert("Please fill the data")
-    //     } else {
-    //         setName("");
-    //         setEmail("");
-    //         setAge("");
-    //     }
-    // }
+
+    //redering the JSX and displaying the core results
     return (
         <>
             <div className="main-div">
@@ -116,9 +107,9 @@ const Enquiry = () => {
 
                                 <input type="text" placeholder="age" value={age} onChange={inputEventAge} /><br />
                             </label>
-                            {toggleButton ? <button className="sub effect05"  data-sm-link-text="Done" onClick={onSubmits} >
+                            {toggleButton ? <button className="sub effect05" data-sm-link-text="Done" onClick={onSubmits} >
                                 <span> Update</span></button> : <button className="sub effect04" data-sm-link-text="Approve" onClick={onSubmits} >
-                                <span> Submit</span></button> }
+                                <span> Submit</span></button>}
                         </form>
                     </div>
                     {/* show our item */}
@@ -141,10 +132,6 @@ const Enquiry = () => {
 
                     </div>
                     <h3> <br /> </h3>
-
-                    {/* remove all button
-                    <div className="showItems"><button type="button" className="btn effect04" data-sm-link-text="Remove All">
-                        <span> Check List</span></button></div> */}
 
                 </div>
             </div>
