@@ -77,7 +77,7 @@ input:focus {
   width: fit-content;
   word-break: break-word;
   background: rgb(85, 41, 220);
-  justify-content: space-between;
+  justify-content: center
 
 }
 
@@ -88,6 +88,7 @@ input:focus {
 
 .showItems .eachItem h3 {
   padding-left: 2rem;
+  padding-bottom: 5px;
   font-size: 1.6rem;
   color: #fff;
 }
@@ -101,11 +102,11 @@ input:focus {
   color: rgb(251, 251, 251);
   -webkit-transition: color 0.15s linear;
   transition: color 0.15s linear;
-  font-size: 2rem;
+  font-size: 2.1rem;
 }
 
 .addItems .fa-edit {
-  color: rgb(47, 214, 122);
+  color: rgb(255, 255, 255);
 }
 
 .todo-btn{
@@ -126,25 +127,26 @@ input:focus {
 }
 
 .sub {
+  
     letter-spacing: 0.1em;
-    cursor: pointer;
+    cursor: grab;
+    justify-content: center;
     font-size: 14px;
     font-weight: 400;
     line-height: 45px;
-    max-width: 160px;
-    display: flex;
+    /* max-width: 160px; */
     margin-top: 20px;
     text-decoration: none;
     text-transform: uppercase;
-    width: 100%;
+    width: 50%;
   }
 .effect04 {
-  --uismLinkDisplay: var(--smLinkDisplay, inline-flex);
+  --uismLinkDisplay: var(--smLinkDisplay, flex);
   display: var(--uismLinkDisplay);
   color: #000;
   outline: solid 2px #000;
   position: relative;
-  transition-duration: 0.4s;
+  transition-duration: 2s;
   overflow: hidden;
 }
 
@@ -160,8 +162,8 @@ input:focus {
 }
 
 .effect04:hover span {
-  -webkit-transform: translateY(-400%) scale(-0.1, 20);
-  transform: translateY(-400%) scale(-0.1, 20);
+  -webkit-transform: translateX(800%) scale(1, 20);
+  transform: translateX(400%) scale(1, 20);
 }
 
 .effect04::before {
@@ -176,6 +178,48 @@ input:focus {
 }
 
 .effect04:hover::before {
+  letter-spacing: 0.05em;
+  -webkit-transform: translateY(0) scale(1, 1);
+  transform: translateY(0) scale(1, 1);
+}
+.effect05 {
+  --uismLinkDisplay: var(--smLinkDisplay, flex);
+  display: var(--uismLinkDisplay);
+  color: #000;
+  outline: solid 2px #000;
+  position: relative;
+  transition-duration: 2s;
+  overflow: hidden;
+}
+
+.effect05::before,
+.effect05 span {
+  margin: 0 auto;
+  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+  transition-duration: 0.4s;
+}
+
+.effect05:hover {
+  background-color: rgb(220, 92, 41);
+}
+
+.effect05:hover span {
+  -webkit-transform: translateX(800%) scale(1, 20);
+  transform: translateX(400%) scale(1, 20);
+}
+
+.effect05::before {
+  content: attr(data-sm-link-text);
+  color: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  -webkit-transform: translateY(500%) scale(-0.1, 20);
+  transform: translateY(500%) scale(-0.1, 20);
+}
+
+.effect05:hover::before {
   letter-spacing: 0.05em;
   -webkit-transform: translateY(0) scale(1, 1);
   transform: translateY(0) scale(1, 1);
